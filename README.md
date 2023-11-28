@@ -1,0 +1,1 @@
+# opensuse-java21-images
