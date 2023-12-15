@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Copyright 2023 Open Text.
+    Copyright 2024 Open Text.
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -30,7 +30,7 @@
     <description>Two openSUSE-based images which includes the OpenJDK 21 Runtime Environment or the OpenJDK 21 Development Kit.</description>
     <url>https://github.com/CAFapi/opensuse-java21-images</url>
 
-    <inceptionYear>2023</inceptionYear>
+    <inceptionYear>2024</inceptionYear>
 
     <parent>
         <groupId>com.github.cafapi</groupId>
@@ -59,7 +59,7 @@
     </developers>
 
     <properties>
-        <copyrightYear>2023</copyrightYear>
+        <copyrightYear>2024</copyrightYear>
         <copyrightNotice>Copyright ${project.inceptionYear} Open Text.</copyrightNotice>
         <maven.install.skip>true</maven.install.skip>
         <skipNexusStagingDeployMojo>true</skipNexusStagingDeployMojo>
