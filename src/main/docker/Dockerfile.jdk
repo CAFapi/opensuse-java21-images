@@ -42,7 +42,7 @@ RUN zypper -n refresh && \
     zypper -n remove -u crypto-policies-scripts && \
     zypper -n clean --all
 
-# Copy su-exec
+# Copy su-exec and create symlink for gosu
 COPY --from=usual-base /usr/local/bin/su-exec /usr/local/bin/su-exec
 RUN ln -s /usr/local/bin/su-exec /usr/local/bin/gosu
 
