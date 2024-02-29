@@ -18,7 +18,7 @@
 ARG DOCKER_HUB_PUBLIC=docker.io
 
 # Reference the base image we normally use
-FROM ${DOCKER_HUB_PUBLIC}/cafapi/opensuse-base:2 AS usual-base
+FROM ${DOCKER_HUB_PUBLIC}/cafapi/prereleases:opensuse-base-2.10.0-SNAPSHOT AS usual-base
 
 #
 # Stage 1
@@ -42,8 +42,9 @@ RUN zypper -n refresh && \
     zypper -n remove -u crypto-policies-scripts && \
     zypper -n clean --all
 
-# Copy gosu
-COPY --from=usual-base /usr/local/bin/gosu /usr/local/bin/gosu
+# Copy su-exec and create symlink for gosu
+COPY --from=usual-base /usr/local/bin/su-exec /usr/local/bin/su-exec
+RUN ln -s /usr/local/bin/su-exec /usr/local/bin/gosu
 
 # Add scripts to be executed during startup
 COPY --from=usual-base /startup /startup
