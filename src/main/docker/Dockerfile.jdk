@@ -14,16 +14,13 @@
 # limitations under the License.
 #
 
-# Docker registry
-ARG DOCKER_HUB_PUBLIC=docker.io
-
 # Reference the base image we normally use
-FROM ${DOCKER_HUB_PUBLIC}/cafapi/opensuse-base:2 AS usual-base
+FROM ${projectDockerRegistry}/cafapi/opensuse-base AS usual-base
 
 #
 # Stage 1
 #
-FROM ${DOCKER_HUB_PUBLIC}/opensuse/leap:15.6 AS stage1
+FROM ${projectDockerRegistry}/opensuse/leap AS stage1
 
 # Set the locale manually to a set inherited from the base image (defaults to POSIX)
 ENV LANG=en_US.utf8
