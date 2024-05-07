@@ -66,7 +66,6 @@
         <dockerHubOrganization>cafapi</dockerHubOrganization>
         <dockerCafImagePrefix>${dockerImagePrefix}${dockerHubOrganization}${dockerOrgSeperator}</dockerCafImagePrefix>
         <dockerProjectVersion>${dockerVersionSeperator}${project.version}</dockerProjectVersion>
-        <DOCKER_HUB_PUBLIC>${dockerHubPublic}</DOCKER_HUB_PUBLIC>
         <projectDockerRegistry>opensuse-java21-images-${project.version}.project-registries.local</projectDockerRegistry>
     </properties>
 
@@ -78,13 +77,36 @@
                     <artifactId>docker-versions-maven-plugin</artifactId>
                     <version>1.0.0-SNAPSHOT</version>
                 </plugin>
+                <plugin>
+                    <groupId>io.fabric8</groupId>
+                    <artifactId>docker-maven-plugin</artifactId>
+                    <version>0.26.1</version>
+                </plugin>
             </plugins>
         </pluginManagement>
         <plugins>
             <plugin>
+                <groupId>com.github.cafapi.plugins.docker.versions</groupId>
+                <artifactId>docker-versions-maven-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <imageManagement>
+                        <image>
+                            <repository>${dockerHubPublic}/cafapi/opensuse-base</repository>
+                            <tag>2.10.1</tag>
+                            <digest>sha256:253735317b56fb0a06ca4ab3a0562555be59ebd4917c702a3de657c5e8bd6127</digest>
+                        </image>
+                        <image>
+                            <repository>${dockerHubPublic}/opensuse/leap</repository>
+                            <tag>15.6</tag>
+                            <digest>sha256:bbcfadb621ea118a99a55ec07ce8586425fc370ac071b5f492bdcb44243c09bb</digest>
+                        </image>
+                    </imageManagement>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>io.fabric8</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
-                <version>0.26.1</version>
                 <executions>
                     <execution>
                         <id>docker-build</id>
