@@ -93,8 +93,8 @@
                     <imageManagement>
                         <image>
                             <repository>${dockerHubPublic}/cafapi/opensuse-base</repository>
-                            <tag>2.10.1</tag>
-                            <digest>sha256:253735317b56fb0a06ca4ab3a0562555be59ebd4917c702a3de657c5e8bd6127</digest>
+                            <tag>4.0.0</tag>
+                            <digest>sha256:e563ca8500ba8edecb33d3b27d9e6d3ea1c11e7698515f925de2678947a3fe0c</digest>
                         </image>
                         <image>
                             <repository>${dockerHubPublic}/opensuse/leap</repository>
@@ -124,7 +124,6 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <autoPull>always</autoPull>
                     <images>
                         <image>
                             <name>${dockerCafImagePrefix}opensuse-jre21${dockerProjectVersion}</name>
