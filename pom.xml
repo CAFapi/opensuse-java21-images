@@ -66,15 +66,46 @@
         <dockerHubOrganization>cafapi</dockerHubOrganization>
         <dockerCafImagePrefix>${dockerImagePrefix}${dockerHubOrganization}${dockerOrgSeperator}</dockerCafImagePrefix>
         <dockerProjectVersion>${dockerVersionSeperator}${project.version}</dockerProjectVersion>
-        <DOCKER_HUB_PUBLIC>${dockerHubPublic}</DOCKER_HUB_PUBLIC>
+        <projectDockerRegistry>opensuse-java21-images-${project.version}.project-registries.local</projectDockerRegistry>
     </properties>
 
     <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>com.github.cafapi.plugins.docker.versions</groupId>
+                    <artifactId>docker-versions-maven-plugin</artifactId>
+                    <version>1.0.0-SNAPSHOT</version>
+                </plugin>
+                <plugin>
+                    <groupId>io.fabric8</groupId>
+                    <artifactId>docker-maven-plugin</artifactId>
+                    <version>0.26.1</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
         <plugins>
+            <plugin>
+                <groupId>com.github.cafapi.plugins.docker.versions</groupId>
+                <artifactId>docker-versions-maven-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <imageManagement>
+                        <image>
+                            <repository>${dockerHubPublic}/cafapi/opensuse-base</repository>
+                            <tag>4.0.0</tag>
+                            <digest>sha256:e563ca8500ba8edecb33d3b27d9e6d3ea1c11e7698515f925de2678947a3fe0c</digest>
+                        </image>
+                        <image>
+                            <repository>${dockerHubPublic}/opensuse/leap</repository>
+                            <tag>15.6</tag>
+                        </image>
+                    </imageManagement>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>io.fabric8</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
-                <version>0.26.1</version>
                 <executions>
                     <execution>
                         <id>docker-build</id>
@@ -92,7 +123,6 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <autoPull>always</autoPull>
                     <images>
                         <image>
                             <name>${dockerCafImagePrefix}opensuse-jre21${dockerProjectVersion}</name>
