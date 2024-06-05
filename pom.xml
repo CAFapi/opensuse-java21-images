@@ -93,8 +93,8 @@
                     <imageManagement>
                         <image>
                             <repository>${dockerHubPublic}/cafapi/opensuse-base</repository>
-                            <tag>4.0.0</tag>
-                            <digest>sha256:e563ca8500ba8edecb33d3b27d9e6d3ea1c11e7698515f925de2678947a3fe0c</digest>
+                            <tag>4.0.1</tag>
+                            <digest>sha256:f77982452d6e373e116a2e77fde2363b945d16501e73098c90e4da309af1febc</digest>
                         </image>
                         <image>
                             <repository>${dockerHubPublic}/opensuse/leap</repository>
